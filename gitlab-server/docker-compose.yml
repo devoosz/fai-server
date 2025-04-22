@@ -1,0 +1,16 @@
+version: '3.6'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    hostname: 'gitlab.local'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.local'
+    ports:
+      - '80:80'
+      - '443:443'
+      - '22:22'
+    volumes:
+      - './config:/etc/gitlab'
+      - './logs:/var/log/gitlab'
+      - './data:/var/opt/gitlab'
